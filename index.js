@@ -168,6 +168,7 @@ window.onload = async function() {
     const buyingSmartWatch = params.smartWatch.includes('No,');
     document.getElementById('smart-watch').textContent = smartWatch;
     // Set iphone upsell
+    console.log(`Buying ${buyingSmartWatch}`)
     document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // TODO:Ensure variables are provided
     
