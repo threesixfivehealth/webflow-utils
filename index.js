@@ -218,22 +218,22 @@ window.onload = async function() {
         cheatDaysPerMonth: monthlyCheatDays
     })
 
-    document.getElementById('first-month').textContent(plan[0].month)
-    document.getElementById('last-month').textContent(plan[plan.length-1].month)
+    document.getElementById('first-month').textContent = plan[0].month;
+    document.getElementById('last-month').textContent = plan[plan.length-1].month;
     if(plan.length<6) {
-        if(plan[1]) document.getElementById('first-month').textContent(plan[1].month)
-        if(plan[2]) document.getElementById('first-month').textContent(plan[2].month)
-        if(plan[3]) document.getElementById('first-month').textContent(plan[3].month)
+        if(plan[1]) document.getElementById('first-month').textContent = plan[1].month;
+        if(plan[2]) document.getElementById('first-month').textContent = plan[2].month;
+        if(plan[3]) document.getElementById('first-month').textContent = plan[3].month;
     } else {
         if(plan.length % 2 == 0) {
             // is even
-            document.getElementById('second-month').textContent(plan[(plan.length/4)-1])
-            document.getElementById('third-month').textContent(plan[(plan.length/2)-1])
+            document.getElementById('second-month').textContent = plan[(plan.length/4)-1]
+            document.getElementById('third-month').textContent = plan[(plan.length/2)-1]
             document.getElementById('fourth-month').display = 'none'
         } else {
-            document.getElementById('second-month').textContent(plan[(plan.length/5)-1])
-            document.getElementById('third-month').textContent(plan[(2*plan.length/5)-1])
-            document.getElementById('fourth-month').textContent(plan[(3*plan.length/5)-1])
+            document.getElementById('second-month').textContent = plan[(plan.length/5)-1]
+            document.getElementById('third-month').textContent = plan[(2*plan.length/5)-1]
+            document.getElementById('fourth-month').textContent = plan[(3*plan.length/5)-1]
         }
     } 
     
