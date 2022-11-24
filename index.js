@@ -148,7 +148,9 @@ window.onload = async function() {
     const weightToLose = params.weight - params.idealWeight;
     // days to lose weight
     const daysToLose = (params.goalDate && !params.goalDate.includes('_')) ? Number(getDifferenceInDays(new Date(), new Date(params.goalDate))): Math.round((weightToLose/2.5) * 30.4)
-    const goalDate = (params.goalDate && !params.goalDate.includes('_')) ?? new Date(Date.now() + ( 3600 * 1000 * 24 * daysToLose)).toLocaleDateString()
+    const nextDate = new Date(new Date())
+    nextDate.setDate(nextDate.getDate() + daysToLose)
+    const goalDate = (params.goalDate && !params.goalDate.includes('_')) ?? nextDate.toLocaleDateString()
     // age
     const age = params.age;
     // activeness (0-6)
