@@ -197,7 +197,7 @@ window.onload = async function() {
 
     // TODO: Set weight loss steps
     // TODO: set iphone upsell
-
+    document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // Set Stripe checkout link
     document.getElementById('stripe-checkout').href= buyingSmartWatch ?
         'https://buy.stripe.com/cN2040f5J9wq5FKbIN'
