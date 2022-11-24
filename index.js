@@ -147,7 +147,7 @@ window.onload = async function() {
     // amount of weight to lose in lbs
     const weightToLose = params.weight - params.idealWeight;
     // days to lose weight
-    const daysToLose = getDifferenceInDays(new Date(), new Date(params.goalDate));
+    const daysToLose = params.goalDate ? getDifferenceInDays(new Date(), new Date(params.goalDate)): Math.round((weightToLose/2.5) * 30.4)
     // age
     const age = params.age;
     // activeness (0-6)
