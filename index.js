@@ -168,7 +168,6 @@ window.onload = async function() {
     const buyingSmartWatch = params.smartWatch.includes('No,');
     document.getElementById('smart-watch').textContent = smartWatch;
     // Set iphone upsell
-    console.log(`Buying ${buyingSmartWatch}`)
     document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // TODO:Ensure variables are provided
     
@@ -221,19 +220,19 @@ window.onload = async function() {
     document.getElementById('first-month').textContent = plan[0].month;
     document.getElementById('last-month').textContent = plan[plan.length-1].month;
     if(plan.length<6) {
-        if(plan[1]) document.getElementById('first-month').textContent = plan[1].month;
-        if(plan[2]) document.getElementById('first-month').textContent = plan[2].month;
-        if(plan[3]) document.getElementById('first-month').textContent = plan[3].month;
+        if(plan[1]) {document.getElementById('second-month').textContent = plan[1].month;} else {document.getElementById('second-month').style.display = 'none'}
+        if(plan[2]) {document.getElementById('third-month').textContent = plan[2].month;} else {document.getElementById('third-month').style.display = 'none'}
+        if(plan[3]) {document.getElementById('fourth-month').textContent = plan[3].month;}  else {document.getElementById('fourth-month').style.display = 'none'}
     } else {
         if(plan.length % 2 == 0) {
             // is even
             document.getElementById('second-month').textContent = plan[(plan.length/4)-1]
             document.getElementById('third-month').textContent = plan[(plan.length/2)-1]
-            document.getElementById('fourth-month').display = 'none'
+            document.getElementById('fourth-month').style.display = 'none'
         } else {
-            document.getElementById('second-month').display = 'none'
+            document.getElementById('second-month').style.display = 'none'
             document.getElementById('third-month').textContent = plan[(plan.length/2).toFixed(0)+1]
-            document.getElementById('fourth-month').display = 'none'
+            document.getElementById('fourth-month').style.display = 'none'
         }
     } 
     
