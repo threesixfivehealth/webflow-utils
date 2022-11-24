@@ -195,8 +195,7 @@ window.onload = async function() {
     document.getElementById('middle-weight-1').textContent = roundToNearestFive(roundUpToNearestFive(weight)-(weightToLose*.25))
     document.getElementById('middle-weight-2').textContent = roundToNearestFive(roundUpToNearestFive(weight)-(weightToLose*.5))
 
-    // TODO: Set weight loss steps
-    // TODO: set iphone upsell
+    // Set iphone upsell
     document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // Set Stripe checkout link
     document.getElementById('stripe-checkout').href= buyingSmartWatch ?
