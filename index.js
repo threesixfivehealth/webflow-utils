@@ -148,6 +148,7 @@ window.onload = async function() {
     const weightToLose = params.weight - params.idealWeight;
     // days to lose weight
     const daysToLose = params.goalDate ? getDifferenceInDays(new Date(), new Date(params.goalDate)): Math.round((weightToLose/2.5) * 30.4)
+    const goalDate = params.goalDate ?? new Date(new Date.getDate() + daysToLose).toLocaleDateString()
     // age
     const age = params.age;
     // activeness (0-6)
@@ -182,8 +183,8 @@ window.onload = async function() {
     // Set weight to lose
     document.getElementById('weight-to-lose').textContent = weightToLose;
     // Set goal dates
-    document.getElementById('goal-date').textContent=new Date(params.goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1,-1).join(', ')
-    document.getElementById('goal-date-2').textContent=new Date(params.goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1).join(', ')
+    document.getElementById('goal-date').textContent=new Date(goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1,-1).join(', ')
+    document.getElementById('goal-date-2').textContent=new Date(goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1).join(', ')
     
     // Set cheat day strat
     document.getElementById('cheat-day-strat').textContent= monthlyCheatDays > 0 ? `Taking ${monthlyCheatDays} per month` : 'Staying disciplined and not taking any cheat days';
