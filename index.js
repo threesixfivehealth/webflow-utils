@@ -160,7 +160,7 @@ window.onload = async function() {
     // name
     const name = `${params.firstName} ${params.lastName}`;
     // biological sex
-    const sex = params.sex
+    const sex = params.sex.toLowerCase()
     // over eating strategy
     document.getElementById('overeating-strat').textContent=`When i over-eat, ${params.overeating.toLowerCase()}`;
     // weight loss strategy (?)
