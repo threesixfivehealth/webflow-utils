@@ -231,9 +231,9 @@ window.onload = async function() {
             document.getElementById('third-month').textContent = plan[(plan.length/2)-1]
             document.getElementById('fourth-month').display = 'none'
         } else {
-            document.getElementById('second-month').textContent = plan[(plan.length/5)-1]
-            document.getElementById('third-month').textContent = plan[(2*plan.length/5)-1]
-            document.getElementById('fourth-month').textContent = plan[(3*plan.length/5)-1]
+            document.getElementById('second-month').display = 'none'
+            document.getElementById('third-month').textContent = plan[(plan.length/2).toFixed(0)+1]
+            document.getElementById('fourth-month').display = 'none'
         }
     } 
     
