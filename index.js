@@ -231,7 +231,7 @@ window.onload = async function() {
             document.getElementById('fourth-month').style.display = 'none'
         } else {
             document.getElementById('second-month').style.display = 'none'
-            document.getElementById('third-month').textContent = plan[(plan.length/2).toFixed(0)+1]
+            document.getElementById('third-month').textContent = plan[Number((plan.length/2).toFixed(0))+1]
             document.getElementById('fourth-month').style.display = 'none'
         }
     } 
