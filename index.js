@@ -167,6 +167,8 @@ window.onload = async function() {
     const smartWatch = params.smartWatch.includes('No,') ? 'provided Apple' : 'smart';
     const buyingSmartWatch = params.smartWatch.includes('No,');
     document.getElementById('smart-watch').textContent = smartWatch;
+    // Set iphone upsell
+    document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // TODO:Ensure variables are provided
     
     // replace template variables
@@ -195,8 +197,6 @@ window.onload = async function() {
     document.getElementById('middle-weight-1').textContent = roundToNearestFive(roundUpToNearestFive(weight)-(weightToLose*.25))
     document.getElementById('middle-weight-2').textContent = roundToNearestFive(roundUpToNearestFive(weight)-(weightToLose*.5))
 
-    // Set iphone upsell
-    document.getElementById('apple-watch').style.display = buyingSmartWatch ? 'flex' : 'none';
     // Set Stripe checkout link
     document.getElementById('stripe-checkout').href= buyingSmartWatch ?
         'https://buy.stripe.com/cN2040f5J9wq5FKbIN'
