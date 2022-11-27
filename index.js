@@ -229,8 +229,8 @@ window.onload = async function() {
     } else {
         if(plan.length % 2 == 0) {
             // is even
-            document.getElementById('second-month').textContent = plan[(plan.length/4)-1].month;
-            document.getElementById('third-month').textContent = plan[(plan.length/2)-1].month;
+            document.getElementById('second-month').textContent = plan[Number((plan.length/4).toFixed(0))-1].month;
+            document.getElementById('third-month').textContent = plan[Number((plan.length/2).toFixed(0))-1].month;
             document.getElementById('fourth-month').style.display = 'none'
         } else {
             document.getElementById('second-month').style.display = 'none'
