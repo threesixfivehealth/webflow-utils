@@ -82,10 +82,10 @@ window.onload = async function() {
     }
 
     // Limit planning to 5 lbs per month
-    const limitResults = async (daysToLose, weightToLose) => {
+    const limitResults = (daysToLose, weightToLose) => {
         const daysPerMonth = 30.416
         let weightPerMonth = weightToLose / (daysToLose/daysPerMonth)
-        if(weightPerMonth<5) return daysToLose
+        if(weightPerMonth<=8) return daysToLose
         weightPerMonth = 5
         daysToLose = weightToLose / (weightPerMonth/daysPerMonth)
         return daysToLose
