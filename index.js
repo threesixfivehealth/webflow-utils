@@ -163,7 +163,7 @@ window.onload = async function() {
     daysToLose = limitResults(daysToLose, weightToLose)
     const nextDate = new Date(new Date())
     nextDate.setDate(nextDate.getDate() + daysToLose)
-    const goalDate = (params.goalDate && !params.goalDate.includes('_')) ? params.goalDate : nextDate.toLocaleDateString()
+    const goalDate = nextDate.toLocaleDateString()
     // age
     const age = params.age;
     // activeness (0-6)
