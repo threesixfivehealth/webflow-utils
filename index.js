@@ -49,8 +49,6 @@ window.onload = async function() {
     const buildPlan = (daysToLose, weightToLose, {
         height, weight, age, gender, activeness, cheatDaysPerMonth
     }) => {
-
-        daysToLose = limitResults(daysToLose, weightToLose)
         const firstDay = new Date()
         cheatDaysPerMonth = cheatDaysPerMonth ?? 0
         const averageDailyDeficit = weightToLose*3500/daysToLose
@@ -160,7 +158,9 @@ window.onload = async function() {
     // amount of weight to lose in lbs
     const weightToLose = params.weight - params.idealWeight;
     // days to lose weight
-    const daysToLose = (params.goalDate && !params.goalDate.includes('_')) ? Number(getDifferenceInDays(new Date(), new Date(params.goalDate))): Math.round((weightToLose/2.5) * 30.4)
+    let daysToLose = (params.goalDate && !params.goalDate.includes('_')) ? Number(getDifferenceInDays(new Date(), new Date(params.goalDate))): Math.round((weightToLose/2.5) * 30.4)
+    // limit goal to 8lbs/mo
+    daysToLose = limitResults(daysToLose, weightToLose)
     const nextDate = new Date(new Date())
     nextDate.setDate(nextDate.getDate() + daysToLose)
     const goalDate = (params.goalDate && !params.goalDate.includes('_')) ? params.goalDate : nextDate.toLocaleDateString()
@@ -197,6 +197,7 @@ window.onload = async function() {
 
     // Set weight to lose
     document.getElementById('weight-to-lose').textContent = weightToLose;
+    // If weight loss goal limit is over 8lbs/month, readjust goal date
     // Set goal dates
     document.getElementById('goal-date').textContent=new Date(goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1,-1).join(', ')
     document.getElementById('goal-date-2').textContent=new Date(goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1).join(', ')
@@ -232,7 +233,6 @@ window.onload = async function() {
         activeness,
         cheatDaysPerMonth: monthlyCheatDays
     })
-
     document.getElementById('first-month').textContent = plan[0].month;
     document.getElementById('last-month').textContent = plan[plan.length-1].month;
     if(plan.length<6) {
