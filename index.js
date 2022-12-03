@@ -49,6 +49,8 @@ window.onload = async function() {
     const buildPlan = (daysToLose, weightToLose, {
         height, weight, age, gender, activeness, cheatDaysPerMonth
     }) => {
+
+        daysToLose = limitResults(daysToLose, weightToLose)
         const firstDay = new Date()
         cheatDaysPerMonth = cheatDaysPerMonth ?? 0
         const averageDailyDeficit = weightToLose*3500/daysToLose
@@ -78,6 +80,17 @@ window.onload = async function() {
         }
         return plan
     }
+
+    // Limit planning to 5 lbs per month
+    const limitResults = async (daysToLose, weightToLose) => {
+        const daysPerMonth = 30.416
+        let weightPerMonth = weightToLose / (daysToLose/daysPerMonth)
+        if(weightPerMonth<5) return daysToLose
+        weightPerMonth = 5
+        daysToLose = weightToLose / (weightPerMonth/daysPerMonth)
+        return daysToLose
+    }
+
     const buildRow = (month, calories, weight) => {
     	const row = document.createElement('div')
       row.className = 'tr';
