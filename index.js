@@ -84,7 +84,7 @@ window.onload = async function() {
         const daysPerMonth = 30.416
         let weightPerMonth = weightToLose / (daysToLose/daysPerMonth)
         if(weightPerMonth<=8) return daysToLose
-        weightPerMonth = 5
+        weightPerMonth = 8
         daysToLose = weightToLose / (weightPerMonth/daysPerMonth)
         return daysToLose
     }
