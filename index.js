@@ -80,7 +80,7 @@ window.onload = async function() {
     }
 
     // Limit planning to 5 lbs per month
-    const limitResults = (daysToLose, weightToLose) => {
+    const limitResultSpeed = (daysToLose, weightToLose) => {
         const daysPerMonth = 30.416
         let weightPerMonth = weightToLose / (daysToLose/daysPerMonth)
         if(weightPerMonth<=8) return daysToLose
@@ -152,15 +152,24 @@ window.onload = async function() {
     // Ensure Variables needed to start exist - error handling
     
     // height in inches
+    // TODO: Check if params.heightFeet needs to be multiplied by 12
     const height = params.heightFeet + params.heightInches
     // weight
     const weight = params.weight;
     // amount of weight to lose in lbs
-    const weightToLose = params.weight - params.idealWeight;
+    let weightToLose = params.weight - params.idealWeight;
+    // Check BMI of start weight
+    const startBMI = weight / (height * 703)
+    // If start weight is underweight, return error
+    if(startBMI<18.5) throw Error(`Unfortunately, your BMI is too low and we are unable to help you lose weight at this time.`)
+    // Check BMI of end weight
+    const endBMI = weight / (height * 703)
+    // If end weight is underweight, adjust goal
+    if(endBMI<18.5) weightToLose = weight - (18.5 * height * 703)
     // days to lose weight
     let daysToLose = (params.goalDate && !params.goalDate.includes('_')) ? Number(getDifferenceInDays(new Date(), new Date(params.goalDate))): Math.round((weightToLose/2.5) * 30.4)
     // limit goal to 8lbs/mo
-    daysToLose = limitResults(daysToLose, weightToLose)
+    daysToLose = limitResultSpeed(daysToLose, weightToLose)
     const nextDate = new Date(new Date())
     nextDate.setDate(nextDate.getDate() + daysToLose)
     const goalDate = nextDate.toLocaleDateString()
