@@ -178,7 +178,23 @@ window.onload = async function() {
     // activeness (0-6)
     const activeness = .75;
     // cheat days per month
-    const monthlyCheatDays = 0;
+    let monthlyCheatDays = 0
+    switch(params.cheatDays) {
+        case 'Yes, twice per week':
+            monthlyCheatDays = 8
+            break;
+        case 'Yes, once per week':
+            monthlyCheatDays = 4
+            break;
+        case 'Yes, bi-weekly':
+            monthlyCheatDays = 2
+            break;
+        case 'Yes, once per month':
+            monthlyCheatDays = 1
+            break;
+        default:
+            // Do nothing to keep at zero
+    }
     // name
     const name = `${params.firstName} ${params.lastName}`;
     // biological sex
