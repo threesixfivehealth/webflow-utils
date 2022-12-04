@@ -153,7 +153,7 @@ window.onload = async function() {
     
     // height in inches
     // TODO: Check if params.heightFeet needs to be multiplied by 12
-    const height = params.heightFeet + params.heightInches
+    const height = (params.heightFeet * 12) + params.heightInches
     // weight
     const weight = params.weight;
     // amount of weight to lose in lbs
