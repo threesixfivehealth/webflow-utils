@@ -194,7 +194,7 @@ window.onload = async function() {
         case 'Athlete (500-1,000 calories/day)':
             activeness = 1.5
             break;
-        case 'Hard labor (+1,000 calories/day)':
+        case 'Hard labor ( 1,000 calories/day)':
             activeness = 2.25;
             break;
     }
