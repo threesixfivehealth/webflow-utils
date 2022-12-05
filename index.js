@@ -175,8 +175,25 @@ window.onload = async function() {
     const goalDate = nextDate.toLocaleDateString()
     // age
     const age = params.age;
-    // activeness (0-6)
-    const activeness = .75;
+    // activeness (1=500 calories)
+    let activeness = 0;
+    switch(params.activeness) {
+        case 'Mostly sedentary (<100 calories/day)':
+            activeness = .1
+            break;
+        case 'Moderate activity (100-300 calories/day)':
+            activeness = .45;
+            break;
+        case 'Active (300-500 calories/day)':
+            activeness = .85
+            break;
+        case 'Athlete (500-1,000 calories/day)':
+            activeness = 1.5
+            break;
+        case 'Hard labor (+1,000 calories/day)':
+            activeness = 2.25;
+            break;
+    }
     // cheat days per month
     let monthlyCheatDays = 0
     switch(params.cheatDays) {
