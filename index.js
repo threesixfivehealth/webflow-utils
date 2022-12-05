@@ -8,6 +8,10 @@ window.onload = async function() {
     "July", "August", "September", "October", "November", "December"
     ];
 
+    const calculateBMI = (weight, height) => {
+        return weight / (Math.pow(height,2)) * 703
+    }
+
     const poundsToKilos = (number) => number *  0.45359237;
     const inchesToCm = (number) => number * 2.54;
     const poundsPerMonth = (deficit) => deficit * 30.4 / 3500
@@ -159,11 +163,11 @@ window.onload = async function() {
     // amount of weight to lose in lbs
     let weightToLose = params.weight - params.idealWeight;
     // Check BMI of start weight
-    const startBMI = weight / (height * 703)
+    const startBMI = calculateBMI(weight, height)
     // If start weight is underweight, return error
     if(startBMI<18.5) throw Error(`Unfortunately, your BMI is too low and we are unable to help you lose weight at this time.`)
     // Check BMI of end weight
-    const endBMI = weight / (height * 703)
+    const endBMI = calculateBMI(Number(params.idealWeight), height)
     // If end weight is underweight, adjust goal
     if(endBMI<18.5) weightToLose = weight - (18.5 * height * 703)
     // days to lose weight
