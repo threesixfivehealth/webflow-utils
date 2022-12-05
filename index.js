@@ -157,11 +157,11 @@ window.onload = async function() {
     
     // height in inches
     // TODO: Check if params.heightFeet needs to be multiplied by 12
-    const height = (params.heightFeet * 12) + params.heightInches
+    const height = (Number(params.heightFeet) * 12) + Number(params.heightInches)
     // weight
-    const weight = params.weight;
+    const weight = Number(params.weight);
     // amount of weight to lose in lbs
-    let weightToLose = params.weight - params.idealWeight;
+    let weightToLose = weight - Number(params.idealWeight);
     // Check BMI of start weight
     const startBMI = calculateBMI(weight, height)
     // If start weight is underweight, return error
@@ -178,7 +178,7 @@ window.onload = async function() {
     nextDate.setDate(nextDate.getDate() + daysToLose)
     const goalDate = nextDate.toLocaleDateString()
     // age
-    const age = params.age;
+    const age = Number(params.age);
     // activeness (1=500 calories)
     let activeness = 0;
     switch(params.activeness) {
