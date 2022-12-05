@@ -249,7 +249,7 @@ window.onload = async function() {
     document.getElementById('goal-date-2').textContent=new Date(goalDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).split(',').slice(1).join(', ')
     
     // Set cheat day strat
-    document.getElementById('cheat-day-strat').textContent= monthlyCheatDays > 0 ? `Taking ${monthlyCheatDays} per month` : 'Staying disciplined and not taking any cheat days';
+    document.getElementById('cheat-day-strat').textContent= monthlyCheatDays > 0 ? `Taking ${monthlyCheatDays} cheat days per month` : 'Staying disciplined and not taking any cheat days';
     // Set tomorrow's date
     const tomorrow = new Date(new Date())
     tomorrow.setDate(tomorrow.getDate() + 1)
